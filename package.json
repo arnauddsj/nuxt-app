@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^0.2.5",
+    "@nuxt/eslint-config": "^0.1.1",
+    "eslint": "^8.36.0",
+    "nuxt": "^3.3.0",
+    "nuxt-security": "^0.12.0",
+    "prisma": "^4.11.0"
+  },
+  "dependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@prisma/client": "^4.11.0",
+    "sass": "^1.59.2",
+    "zod": "^3.21.4"
+  }
+}

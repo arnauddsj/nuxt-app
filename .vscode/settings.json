@@ -1,0 +1,12 @@
+{
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "eslint.format.enable": false,
+    "editor.formatOnSave": true,
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+      },
+      "cSpell.words": [
+        "composables",
+        "nuxt"
+      ],
+}
