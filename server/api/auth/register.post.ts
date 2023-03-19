@@ -1,9 +1,7 @@
-import { User } from '@prisma/client'
-import useGenPassword from '~/auth/composables/useGenPassword'
-import { PasswordType, passwordSchema, ISecuredPassword, emailSchema, EmailType } from '~/types/auth'
+import { User, PasswordType, passwordSchema, ISecuredPassword, emailSchema, EmailType } from '~/types/auth'
+import { useGenPassword } from '~/composables/auth'
 
-// Depending on the app, remove Partial from User Type and maybe create a separate interface for the response instead of using User from prisma
-export default defineEventHandler(async (event): Promise<Partial<User>> => {
+export default defineEventHandler(async (event): Promise<User> => {
   const body = await readBody(event)
 
   const password : PasswordType = body.password
@@ -27,7 +25,7 @@ export default defineEventHandler(async (event): Promise<Partial<User>> => {
   }
 
   // Hash and salt password are optional in case of social login
-  const genPassword : Partial<ISecuredPassword> = useGenPassword(password)
+  const genPassword : Partial<ISecuredPassword> = await useGenPassword(password)
 
   const user = await event.context.prisma.user.create({
     data: {
