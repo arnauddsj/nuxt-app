@@ -20,8 +20,10 @@ export default defineNuxtConfig({
     basePath: '/api/auth',
     enableGlobalAppMiddleware: true
   },
-  dirs: ['stores'],
+  imports: {
+    dirs: ['stores']
+  },
   pinia: {
-    autoImports: ['defineStore']
+    autoImports: ['defineStore', 'storeToRefs']
   }
 })
