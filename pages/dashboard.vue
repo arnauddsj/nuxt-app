@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { data, status, getCsrfToken, getProviders, signIn, signOut } = useSession()
+
+const authStore = useAuthStore()
 const providers = await getProviders()
 const csrfToken = await getCsrfToken()
 </script>

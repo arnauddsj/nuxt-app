@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['nuxt-security', '@nuxt/devtools', '@vueuse/nuxt', '@sidebase/nuxt-auth'],
+  modules: ['nuxt-security', '@nuxt/devtools', '@vueuse/nuxt', '@sidebase/nuxt-auth', '@pinia/nuxt'],
   security: {
     headers: {
       contentSecurityPolicy: process.env.NODE_ENV !== 'development'
@@ -19,5 +19,9 @@ export default defineNuxtConfig({
     origin: process.env.AUTH_ORIGIN,
     basePath: '/api/auth',
     enableGlobalAppMiddleware: true
+  },
+  dirs: ['stores'],
+  pinia: {
+    autoImports: ['defineStore']
   }
 })
