@@ -1,3 +1,4 @@
+// This is an example of a local password authentication strategy, it's not implemented in the app
 import { User, PasswordType, passwordSchema, emailSchema, EmailType } from '~/types/auth'
 import { useVerifyPassword } from '~/composables/auth'
 

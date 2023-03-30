@@ -25,5 +25,14 @@ export default defineNuxtConfig({
   },
   pinia: {
     autoImports: ['defineStore', 'storeToRefs']
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/_global.scss" as *;'
+        }
+      }
+    }
   }
 })

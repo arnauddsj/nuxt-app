@@ -3,6 +3,7 @@ import EmailProvider from 'next-auth/providers/email'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { PrismaClient } from '@prisma/client'
 import { NuxtAuthHandler } from '#auth'
+import { User } from '#types/auth'
 
 const prisma = new PrismaClient()
 
@@ -36,6 +37,27 @@ export default NuxtAuthHandler({
       },
       from: process.env.EMAIL_FROM
     })
-
-  ]
+  ],
+  callbacks: {
+    // async signIn (user) {
+    //   // @ts-expect-error
+    //   const isAllowedToSignIn = true
+    //   if (isAllowedToSignIn) {
+    //     console.log(user)
+    //     return true
+    //   } else {
+    //     // Return false to display a default error message
+    //     return false
+    //     // Or you can return a URL to redirect to:
+    //     // return '/unauthorized'
+    //     // You can also Reject this callback with an Error or with a URL:
+    //     // throw new Error('error message')      // Redirect to error page
+    //     // throw '/path/to/redirect'        // Redirect to a URL
+    //   }\
+    session ({ session, token, user }: {session: any, user: User}) {
+      // session.user = user
+      console.log(user)
+      return session
+    }
+  }
 })

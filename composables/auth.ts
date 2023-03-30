@@ -1,3 +1,5 @@
+// This is an example of a local password authentication strategy, it's not implemented in the app
+
 import * as bcrypt from 'bcrypt'
 import { PasswordType, ISecuredPassword } from '~/types/auth'
 

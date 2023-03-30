@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data, status, getCsrfToken, getProviders, signIn, signOut } = useSession()
+const { data, status, getCsrfToken, getProviders, user } = useSession()
 
 const authStore = useAuthStore()
 const { isLogin } = storeToRefs(authStore)
@@ -10,7 +10,8 @@ const csrfToken = await getCsrfToken()
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-1">
+    <h1>User Profile</h1>
     <div>
       <div>
         <img
@@ -19,19 +20,10 @@ const csrfToken = await getCsrfToken()
           :src="data.user.image"
           alt="User Avatar"
         >
-        <h1 v-if="status === 'authenticated'" class="text-lg">
+        <h1 class="h1">
           Authenticated as {{ data?.user?.name }}!
         </h1>
-        <h1 v-else>
-          Not logged in
-        </h1>
       </div>
-      <button v-if="status === 'authenticated'" @click="signOut({ callbackUrl: '/' })">
-        <span>Logout</span>
-      </button>
-      <button v-else @click="signIn()">
-        <span>Login</span>
-      </button>
     </div>
     <h3>
       Authentication Overview
@@ -43,13 +35,19 @@ const csrfToken = await getCsrfToken()
       <span>Status:</span> {{ status }}
     </div>
     <div v-if="data">
-      <span>Data:</span> {{ data }}
+      <span>Data:</span> {{ data.user }}
+    </div>
+    <div>
+      <span>User:</span> {{ user }}
     </div>
     <div v-if="csrfToken">
       <span>CSRF Token:</span> {{ csrfToken }}
     </div>
     <div v-if="providers">
-      <span>Providers:</span> {{ providers }}
+      <span>Providers:</span>
+      <div v-for="(provider, name, index) in providers" :key="index">
+        {{ provider }}
+      </div>
     </div>
     <div>{{ isLogin }}</div>
   </div>

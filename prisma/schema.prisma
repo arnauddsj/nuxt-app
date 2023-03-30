@@ -16,8 +16,10 @@ model User {
   email         String    @unique
   emailVerified DateTime?
   image         String?
-  hash          String?
-  salt          String?
+  // Only used for local auth strategy
+  // hash          String?
+  // salt          String?
+  lastLogin     DateTime? @updatedAt
   accounts      Account[]
   sessions      Session[]
 }

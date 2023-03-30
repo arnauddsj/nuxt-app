@@ -1,7 +1,10 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div>Component: coucou</div>
+  <div>
+    <NavBar />
+    <slot />
+  </div>
 </template>
 
 <style scoped></style>

@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>Sign-In Options:</p>
-    <button @click="signIn('github', {callbackUrl: '/dashboard'})">
+    <div class="flex flex-col" />
+    <button @click="signIn('github', {callbackUrl: '/profile'})">
       Github
     </button>
     <!-- NOTE: Here we hard-coded username and password, on your own page this should probably be connected to two inputs for username + password -->

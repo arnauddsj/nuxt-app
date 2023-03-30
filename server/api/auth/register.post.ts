@@ -1,3 +1,5 @@
+// This is an example of a local password authentication strategy, it's not implemented in the app
+
 import { User, PasswordType, passwordSchema, ISecuredPassword, emailSchema, EmailType } from '~/types/auth'
 import { useGenPassword } from '~/composables/auth'
 
