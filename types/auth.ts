@@ -15,6 +15,6 @@ export interface ISecuredPassword {
 
 export interface User {
   id: string,
-  email: string,
-  lastLogin: Date,
+  email: EmailType,
+  lastLogin: Date | null,
 }

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-const { data, status, getCsrfToken, getProviders, user } = useSession()
+const { data, status, getCsrfToken, getProviders } = useSession()
 
-const authStore = useAuthStore()
-const { isLogin } = storeToRefs(authStore)
+const userStore = useUserStore()
+
+const { user, isAuth } = storeToRefs(userStore)
 
 const providers = await getProviders()
 const csrfToken = await getCsrfToken()
@@ -28,6 +29,9 @@ const csrfToken = await getCsrfToken()
     <h3>
       Authentication Overview
     </h3>
+    <h4>Store</h4>
+    <div>isAuth:{{ isAuth }} / user: {{ user }}</div>
+    <h4>useSession</h4>
     <p>
       See all available authentication & session information below.
     </p>
@@ -35,11 +39,9 @@ const csrfToken = await getCsrfToken()
       <span>Status:</span> {{ status }}
     </div>
     <div v-if="data">
-      <span>Data:</span> {{ data.user }}
+      <span>data.user:</span> {{ data.user }}
     </div>
-    <div>
-      <span>User:</span> {{ user }}
-    </div>
+    
     <div v-if="csrfToken">
       <span>CSRF Token:</span> {{ csrfToken }}
     </div>
@@ -49,6 +51,6 @@ const csrfToken = await getCsrfToken()
         {{ provider }}
       </div>
     </div>
-    <div>{{ isLogin }}</div>
+
   </div>
 </template>
