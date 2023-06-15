@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data, status, getCsrfToken, getProviders } = useSession()
+const { data, status, getCsrfToken, getProviders } = useAuth()
 
 const userStore = useUserStore()
 
@@ -41,7 +41,7 @@ const csrfToken = await getCsrfToken()
     <div v-if="data">
       <span>data.user:</span> {{ data.user }}
     </div>
-    
+
     <div v-if="csrfToken">
       <span>CSRF Token:</span> {{ csrfToken }}
     </div>
@@ -51,6 +51,5 @@ const csrfToken = await getCsrfToken()
         {{ provider }}
       </div>
     </div>
-
   </div>
 </template>

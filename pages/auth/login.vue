@@ -12,8 +12,7 @@
   </div>
 </template>
 <script setup lang="ts">
-
-const { signIn } = useSession()
+const { signIn } = useAuth()
 
 definePageMeta({ auth: false })
 </script>

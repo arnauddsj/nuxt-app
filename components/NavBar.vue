@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { status, signOut } = useSession()
+const { status, signOut } = useAuth()
 </script>
 
 <template>
@@ -19,7 +19,6 @@ const { status, signOut } = useSession()
       </li>
     </ul>
     <div>
-    
       <div v-if="status !== 'authenticated'">
         <NuxtLink to="/auth/login">
           Login
